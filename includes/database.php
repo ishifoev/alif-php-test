@@ -40,4 +40,13 @@ function getOfficeById($office_id) {
     }
 }
 
+// Функция для бронирования кабинета
+function reserveOffice($office_id, $start_time, $end_time, $reserved_by_name, $reserved_by_email, $reserved_by_phone) {
+    global $conn;
+    $sql = "UPDATE offices SET is_available = 0 WHERE id = $office_id";
+    $conn->query($sql);
+
+    $sql = "INSERT INTO reservations (office_id, start_time, end_time, reserved_by_name, reserved_by_email, reserved_by_phone) VALUES ($office_id, '$start_time', '$end_time', '$reserved_by_name', '$reserved_by_email', '$reserved_by_phone')";
+    $conn->query($sql);
+}
 ?>
