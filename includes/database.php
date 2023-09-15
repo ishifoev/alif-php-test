@@ -26,4 +26,18 @@ function getAvailableOffices() {
 
     return $offices;
 }
+
+// Функция для получения информации о кабинете по ID
+function getOfficeById($office_id) {
+    global $conn;
+    $sql = "SELECT * FROM offices WHERE id = $office_id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows == 1) {
+        return $result->fetch_assoc();
+    } else {
+        return null;
+    }
+}
+
 ?>
