@@ -1,3 +1,5 @@
+<?php
+
 class Reservation {
     private $id;
     private $officeId;
